@@ -1,0 +1,350 @@
+swagger: "2.0"
+info:
+  description: " Prelucrarea imaginilor"
+  version: "1.0.0"
+  title: "Swagger Imagini"
+host: "andrive.go.ro"
+basePath: "/faculta/pw/test.php"
+tags:
+- name: "imagini"
+  description: "Prelucracrea imaginilor"
+schemes:
+- "https"
+- "http"
+paths:
+  /etichete:
+    get:
+      tags:
+      - "imagini"
+      summary: "Afiseaza lista de etichete"
+      description: ""
+      responses:
+        200:
+          description: "successful operation" 
+          
+  /imagini:
+    get:
+      tags:
+      - "imagini"
+      summary: "Afiseaza lista de imagini"
+      description: ""
+      responses:
+        200:
+          description: "successful operation"
+
+  /imagini/colectie/{id}:
+    get:
+      tags:
+      - "imagini"
+      summary: "Lista de imagini din colectia data"
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+
+  /etichete/colectie/{id}:
+    get:
+      tags:
+      - "imagini"
+      summary: "Obtine lista de etichete pentru o colectie"
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+
+  /etichete/imagine/{id}:
+    get:
+      tags:
+      - "imagini"
+      summary: "Obtine lista de etichete pentru o imagine "
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+
+  /imagine/{id}:
+    get:
+      tags:
+      - "imagini"
+      summary: "Afiseaza informatii despre imagine "
+      description: ""
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successful operation"
+
+###### PUT
+
+  /adauga/utilizator:
+    put:
+      tags:
+      - "imagini"
+      summary: "Adauga un utilizator nou"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Invalid data"
+
+  /adauga/eticheta:
+    put:
+      tags:
+      - "imagini"
+      summary: "Adauga o eticheta noua"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Eticheta"
+        required: true
+        schema:
+          $ref: "#/definitions/Eticheta"
+      responses:
+        400:
+          description: "Invalid data"
+
+
+  /adauga/colectie:
+    put:
+      tags:
+      - "imagini"
+      summary: "Adauga o colectie noua"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Colectie"
+        required: true
+        schema:
+          $ref: "#/definitions/Colectie"
+      responses:
+        400:
+          description: "Invalid data"
+
+  /adauga/imagine:
+    put:
+      tags:
+      - "imagini"
+      summary: "Adauga o imagine noua"
+      description: ""
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Imagine"
+        required: true
+        schema:
+          $ref: "#/definitions/Imagine"
+      responses:
+        400:
+          description: "Invalid data"
+
+
+###### POST
+
+  /modifica/imagine/{id}:
+    post:
+      tags:
+      - "imagini"
+      summary: "Modifica o imagine "
+      description: ""
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Denumire Imagine"
+        required: false
+        type: "string"
+      - name: "eticheta"
+        in: "formData"
+        description: "Eticheta Imagine"
+        required: false
+        type: "string"
+      - name: "url"
+        in: "formData"
+        description: "URL Imagine"
+        required: false
+        type: "string"
+      responses:
+        405:
+          description: "Invalid input"
+          
+  /modifica/colectie/{id}:
+    post:
+      tags:
+      - "imagini"
+      summary: "Modifica o colectie "
+      description: ""
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Denumire Colectie"
+        type: "string"
+      - name: "img1"
+        in: "formData"
+        type: "string"
+      - name: "img2"
+        in: "formData"
+        type: "string"
+      - name: "img3"
+        in: "formData"
+        type: "string"
+      - name: "img4"
+        in: "formData"
+        type: "string"
+      - name: "img5"
+        in: "formData"
+        type: "string"
+      responses:
+        405:
+          description: "Invalid input"
+          
+  /delete/utilizator/{id}:
+    post:
+      tags:
+      - "imagini"
+      summary: "Sterge un utilizator "
+      description: ""
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        405:
+          description: "Invalid input"
+  
+  /modifica/utilizator/{id}:
+    post:
+      tags:
+      - "imagini"
+      summary: "Modifica datele unui utilizator"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Imagine"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "username"
+        in: "formData"
+        type: "string"
+      - name: "email"
+        in: "formData"
+        type: "string"
+      - name: "password"
+        in: "formData"
+        type: "string"
+      responses:
+        405:
+          description: "Invalid input"
+          
+          
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  User:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+    xml:
+      name: "User"
+  Eticheta:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+  Colectie:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      img1:
+        type: "string"
+      img2:
+        type: "string"
+      img3:
+        type: "string"
+      img4:
+        type: "string"
+      img5:
+        type: "string"
+  Imagine:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      url:
+        type: "string"
+      etichete:
+        type: "string"
+      
+      
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
